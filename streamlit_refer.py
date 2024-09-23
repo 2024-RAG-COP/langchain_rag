@@ -9,6 +9,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain.document_loaders import PyPDFLoader
 from langchain.document_loaders import Docx2txtLoader
 from langchain.document_loaders import UnstructuredPowerPointLoader
+from langchain.document_loaders import BSHTMLLoader
 from langchain.document_loaders import CSVLoader
 #from langchain_community.document_loaders.csv_loader import CSVLoader
 
@@ -131,6 +132,9 @@ def get_text(docs):
             #loader = CSVLoader(file_path=file_path, source_column="단지명")
             loader = CSVLoader(file_path=file_path, encoding="cp949", source_column="질문")
             #documents = loader.load()
+            documents = loader.load_and_split()
+        elif '.html' in doc.name:
+            loader = BSHTMLLoader(file_name)
             documents = loader.load_and_split()
         doc_list.extend(documents)
 
