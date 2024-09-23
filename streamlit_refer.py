@@ -135,7 +135,7 @@ def get_text(docs):
             documents = loader.load_and_split()
         elif '.html' in doc.name:
             loader = BSHTMLLoader(file_name)
-            documents = loader.load_and_split()
+            documents = loader.load()
         doc_list.extend(documents)
 
     logger.info(f"End get_text")
